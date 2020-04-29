@@ -1,0 +1,10 @@
+.Home-border {
+  display: flex;
+  flex-direction: column;
+  background-color: #dd5248;
+  border: 1px solid rgb(65, 65, 65);
+  border-radius: 10px;
+  margin: 20px;
+  padding: 20px;
+  box-shadow: 20px 15px 10px rgba(116, 116, 116, 0.4);
+}

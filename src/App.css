@@ -1,3 +1,13 @@
 .App {
+  display: flex;
+  justify-content: center;
   text-align: center;
+}
+
+:root {
+  background-color: #f7f7f7;
+}
+
+h1{
+  color: #f0f0f0;
 }
