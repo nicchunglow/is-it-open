@@ -13,4 +13,9 @@ describe("Home", () => {
     const restaurantName = getByText("Kushi Tsuru");
     expect(restaurantName).toHaveTextContent("Kushi Tsuru");
   });
+  test("should display the last restaurant in the list", () => {
+    const { getByText } = render(<Home />);
+    const restaurantName = getByText("Simon's Café");
+    expect(restaurantName).toHaveTextContent("Simon's Café");
+  });
 });
