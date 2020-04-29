@@ -5,7 +5,12 @@ import Home from "./Home";
 describe("Home", () => {
   test("should render 'Home created'", () => {
     const { getByText } = render(<Home />);
-    const homeText = getByText("Home created");
+    const homeText = getByText("Is it Open?");
     expect(homeText).toBeInTheDocument();
+  });
+  test("should display the first restaurant of the list", () => {
+    const { getByText } = render(<Home />);
+    const restaurantName = getByText("Kushi Tsuru");
+    expect(restaurantName).toHaveTextContent("Kushi Tsuru");
   });
 });
