@@ -4,14 +4,19 @@
   text-align: center;
 }
 
-:root {
-  background-color: #f7f7f7;
-}
-
 h1 {
   color: #f0f0f0;
 }
 
 p {
   color: #f0f0f0;
+}
+
+.Logo-tag{
+  display: flex;
+  flex-direction: column;
+  background-color: #dd5248;
+  border-radius: 0px 0px 10px 10px;
+  padding: 20px;
+  box-shadow: 20px 15px 10px rgba(116, 116, 116, 0.4);
 }

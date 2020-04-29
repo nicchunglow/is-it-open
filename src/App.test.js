@@ -2,8 +2,8 @@ import React from "react";
 import { render } from "@testing-library/react";
 import App from "./App";
 
-test("renders learn react link", () => {
+test("should render 'Is it Open?' ", () => {
   const { getByText } = render(<App />);
-  const linkElement = getByText("Is it Open?");
-  expect(linkElement).toBeInTheDocument();
+  const homeText = getByText("Is it Open?");
+  expect(homeText).toBeInTheDocument();
 });

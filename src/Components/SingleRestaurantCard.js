@@ -1,9 +1,9 @@
 import React from "react";
 import { Card } from "semantic-ui-react";
 
-const SingleRestaurantCard = ({singleRestaurantData}) => {
+const SingleRestaurantCard = ({ singleRestaurantData }) => {
   return (
-    <Card>
+    <Card color="orange">
       <Card.Content>
         <Card.Header>{singleRestaurantData.name}</Card.Header>
         <Card.Description>
