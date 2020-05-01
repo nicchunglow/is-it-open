@@ -5,10 +5,8 @@ const SingleRestaurantCard = ({ singleRestaurantData }) => {
   return (
     <Card color="orange">
       <Card.Content>
-        <Card.Header>{singleRestaurantData.name}</Card.Header>
-        <Card.Description>
-          {singleRestaurantData.operatingSchedule}
-        </Card.Description>
+        <Card.Header>{singleRestaurantData[[0]]}</Card.Header>
+        <Card.Description>{singleRestaurantData[[1]]}</Card.Description>
       </Card.Content>
     </Card>
   );

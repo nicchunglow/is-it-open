@@ -12,9 +12,15 @@ function App() {
           <span className="Logo-tag">
             <h1>Is it Open?</h1>
           </span>
-          <HeaderBar />
-          <Route exact path="/" component={Home} />
-          <Route exact path="/restaurants/yourcollection" component={Collection} />
+          <div>
+            <HeaderBar />
+            <Route exact path="/" component={Home} />
+            <Route
+              exact
+              path="/restaurants/yourcollection"
+              component={Collection}
+            />
+          </div>
         </header>
       </div>
     </BrowserRouter>
