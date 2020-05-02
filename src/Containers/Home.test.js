@@ -12,6 +12,13 @@ describe("Home", () => {
       expect(restaurantName).toBeInTheDocument();
     });
   });
+  describe("Load more button", () => {
+    test("should have the 'Load More' button rendered", () => {
+      const { getByText } = render(<Home />);
+      const loadmoreButton = getByText("Load More");
+      expect(loadmoreButton).toBeInTheDocument();
+    });
+  });
   describe("Statistics", () => {
     test("should display the 'Restaurants for you to choose!' in the list", () => {
       const { getByText, getByLabelText } = render(<Home />);

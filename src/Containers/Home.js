@@ -1,6 +1,6 @@
 import React from "react";
 import SingleRestaurantCard from "../Components/SingleRestaurantCard";
-import { Container, Card, Statistic } from "semantic-ui-react";
+import { Container, Card, Statistic, Button } from "semantic-ui-react";
 import { v4 as uuidv4 } from "uuid";
 import Papa from "papaparse";
 import LoadingCircle from "../Components/Loader";
@@ -11,6 +11,7 @@ class Home extends React.Component {
       allRestaurants: [["KFC", "Everyday"]],
       isLoading: true,
       myCollections: ["Korean", "Chinese", "Indian"],
+      limit: 5,
     };
   }
 
@@ -37,6 +38,24 @@ class Home extends React.Component {
   updateLoading = () => {
     this.setState({ isLoading: false });
   };
+  increaseLimit = () => {
+    this.setState({
+      limit: this.state.limit + 5,
+    });
+    console.log(this.state.limit);
+  };
+
+  renderRestaurants = () => {
+    return this.state.allRestaurants
+      .slice(0, this.state.limit)
+      .map((restaurant) => (
+        <SingleRestaurantCard
+          key={uuidv4()}
+          singleRestaurantData={restaurant}
+          myCollectionData={this.state.myCollections}
+        />
+      ));
+  };
 
   render() {
     return (
@@ -48,19 +67,13 @@ class Home extends React.Component {
           </Statistic.Label>
         </Statistic>
         <LoadingCircle isLoading={this.state.isLoading} />
-        <Card.Group stackable itemsPerRow="5">
-          {/* <SingleRestaurantCard
-            aria-Label="card"
-            key={uuidv4()}
-            singleRestaurantData={this.state.allRestaurants[0]}
-          /> */}
-          {this.state.allRestaurants.map((restaurant) => (
-            <SingleRestaurantCard
-              key={uuidv4()}
-              singleRestaurantData={restaurant}
-              myCollectionData={this.state.myCollections}
-            />
-          ))}
+        <Card.Group stackable itemsPerRow="5" centered>
+          {this.renderRestaurants()}
+          <Button
+            color="orange"
+            content="Load More"
+            onClick={this.increaseLimit}
+          />
         </Card.Group>
       </Container>
     );
