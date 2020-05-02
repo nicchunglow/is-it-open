@@ -1,5 +1,5 @@
 import React from "react";
-import { render, fireEvent } from "@testing-library/react";
+import { render, fireEvent, within, wait } from "@testing-library/react";
 import Home from "./Home";
 
 describe("Home", () => {
@@ -15,8 +15,8 @@ describe("Home", () => {
   describe("Load more button", () => {
     test("should have the 'Load More' button rendered", () => {
       const { getByText } = render(<Home />);
-      const loadmoreButton = getByText("Load More");
-      expect(loadmoreButton).toBeInTheDocument();
+      const loadMoreButton = getByText("Load More");
+      expect(loadMoreButton).toBeInTheDocument();
     });
   });
   describe("Statistics", () => {

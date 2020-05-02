@@ -50,7 +50,9 @@ class AddCollectionModal extends React.Component {
                 return (
                   <List key={uuidv4()}>
                     <List.Item>
-                      <Label color="orange">{collection}</Label>
+                      <Label color="orange" >
+                        {collection}
+                      </Label>
                     </List.Item>
                   </List>
                 );

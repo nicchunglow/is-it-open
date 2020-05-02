@@ -1,6 +1,15 @@
 import React from "react";
 import SingleRestaurantCard from "../Components/SingleRestaurantCard";
-import { Container, Card, Statistic, Button } from "semantic-ui-react";
+import {
+  Container,
+  Card,
+  Statistic,
+  Button,
+  Input,
+  Divider,
+  Segment,
+  Header,
+} from "semantic-ui-react";
 import { v4 as uuidv4 } from "uuid";
 import Papa from "papaparse";
 import LoadingCircle from "../Components/Loader";
@@ -11,7 +20,8 @@ class Home extends React.Component {
       allRestaurants: [["KFC", "Everyday"]],
       isLoading: true,
       myCollections: ["Korean", "Chinese", "Indian"],
-      limit: 5,
+      numberOfRestaurantsShown: 5,
+      searchRestaurantName: "",
     };
   }
 
@@ -38,16 +48,16 @@ class Home extends React.Component {
   updateLoading = () => {
     this.setState({ isLoading: false });
   };
-  increaseLimit = () => {
+
+  showMoreRestaurants = () => {
     this.setState({
-      limit: this.state.limit + 5,
+      numberOfRestaurantsShown: this.state.numberOfRestaurantsShown + 5,
     });
-    console.log(this.state.limit);
   };
 
   renderRestaurants = () => {
     return this.state.allRestaurants
-      .slice(0, this.state.limit)
+      .slice(0, this.state.numberOfRestaurantsShown)
       .map((restaurant) => (
         <SingleRestaurantCard
           key={uuidv4()}
@@ -57,24 +67,68 @@ class Home extends React.Component {
       ));
   };
 
+  filterByName = () => {
+    return this.state.allRestaurants
+      .filter((perRestaurant) =>
+        perRestaurant[0]
+          .toLowerCase()
+          .includes(this.state.searchRestaurantName.toLowerCase())
+      )
+      .map((restaurant) => {
+        return (
+          <SingleRestaurantCard
+            key={uuidv4()}
+            singleRestaurantData={restaurant}
+            myCollectionData={this.state.myCollections}
+          />
+        );
+      });
+  };
+  onSearchRestaurantNameChange = (event) => {
+    this.setState({
+      searchRestaurantName: event.target.value,
+    });
+  };
   render() {
     return (
-      <Container>
-        <Statistic>
-          <Statistic.Value>{this.state.allRestaurants.length}</Statistic.Value>
-          <Statistic.Label aria-label="stats">
-            Restaurants for you to choose!
-          </Statistic.Label>
-        </Statistic>
+      <Container aria-label="Home Container">
         <LoadingCircle isLoading={this.state.isLoading} />
-        <Card.Group stackable itemsPerRow="5" centered>
-          {this.renderRestaurants()}
-          <Button
-            color="orange"
-            content="Load More"
-            onClick={this.increaseLimit}
-          />
-        </Card.Group>
+        <Segment.Group>
+          <Segment>
+            <Statistic>
+              <Statistic.Value>
+                {this.state.allRestaurants.length}
+              </Statistic.Value>
+              <Statistic.Label aria-label="stats">
+                Restaurants for you to choose!
+              </Statistic.Label>
+            </Statistic>
+          </Segment>
+          <Segment>
+            <Header>Can't find your restaurant?</Header>
+            <h4>Search your restaurant by name!</h4>
+            <Input
+              placeholder="Search by Name"
+              onChange={this.onSearchRestaurantNameChange}
+            />
+            <h4>Search your restaurant by Opening day!</h4>
+            <Input placeholder="Search by Opening Day" />
+          </Segment>
+          <Segment>
+            <Card.Group stackable itemsPerRow="5" centered>
+              {this.state.searchRestaurantName !== "" && this.filterByName()}
+              {this.state.searchRestaurantName === "" &&
+                this.renderRestaurants()}
+              {this.state.searchRestaurantName === "" && (
+                <Button
+                  color="orange"
+                  content="Load More"
+                  onClick={this.showMoreRestaurants}
+                />
+              )}
+            </Card.Group>
+          </Segment>
+        </Segment.Group>
       </Container>
     );
   }

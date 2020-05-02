@@ -17,9 +17,9 @@ class SingleRestaurantCard extends React.Component {
     return (
       <Card color="orange" aria-label="restaurant card">
         <Card.Content>
-          <Card.Header>{this.state.singleRestaurantData[[0]]}</Card.Header>
+          <Card.Header>{this.state.singleRestaurantData[0]}</Card.Header>
           <Card.Description>
-            {this.state.singleRestaurantData[[1]]}
+            {this.state.singleRestaurantData[1]}
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
