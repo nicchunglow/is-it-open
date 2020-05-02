@@ -1,16 +1,33 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, fireEvent } from "@testing-library/react";
 import Home from "./Home";
 
 describe("Home", () => {
-  test("should display the first restaurant of the list", () => {
-    const { getByText } = render(<Home />);
-    const restaurantName = getByText("Kushi Tsuru");
-    expect(restaurantName).toHaveTextContent("Kushi Tsuru");
+  describe("Restaurant Card", () => {
+    test("should display the first restaurant in the list", () => {
+      const { getByText, getByLabelText } = render(<Home />);
+      const homeText = getByText("KFC");
+      const restaurantName = getByLabelText("restaurant card");
+      expect(homeText).toBeInTheDocument();
+      expect(restaurantName).toBeInTheDocument();
+    });
   });
-  test("should display the last restaurant in the list", () => {
-    const { getByText } = render(<Home />);
-    const restaurantName = getByText("Simon's Café");
-    expect(restaurantName).toHaveTextContent("Simon's Café");
+  describe("Statistics", () => {
+    test("should display the 'Restaurants for you to choose!' in the list", () => {
+      const { getByText, getByLabelText } = render(<Home />);
+      const homeText = getByText("Restaurants for you to choose!");
+      const stats = getByLabelText("stats");
+      expect(homeText).toBeInTheDocument();
+      expect(stats).toBeInTheDocument();
+    });
+  });
+  describe("AddCollectionModal", () => {
+    test("should display add collection Modal after clicking button", () => {
+      const { getByText } = render(<Home />);
+      const myCollectionButton = getByText("Add to collection");
+      fireEvent.click(myCollectionButton);
+      const addCollectionModalHeader = getByText("Adding to collection");
+      expect(addCollectionModalHeader).toBeInTheDocument();
+    });
   });
 });

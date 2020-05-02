@@ -8,8 +8,9 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      allRestaurants: [],
+      allRestaurants: [["KFC", "Everyday"]],
       isLoading: true,
+      myCollections: ["Korean", "Chinese", "Indian"],
     };
   }
 
@@ -42,17 +43,24 @@ class Home extends React.Component {
       <Container>
         <Statistic>
           <Statistic.Value>{this.state.allRestaurants.length}</Statistic.Value>
-          <Statistic.Label aria-label="stats">Restaurants for you to choose!</Statistic.Label>
+          <Statistic.Label aria-label="stats">
+            Restaurants for you to choose!
+          </Statistic.Label>
         </Statistic>
         <LoadingCircle isLoading={this.state.isLoading} />
         <Card.Group stackable itemsPerRow="5">
-          {this.state.allRestaurants.map((restaurant) => (
-            <SingleRestaurantCard
+          <SingleRestaurantCard
             aria-Label="card"
+            key={uuidv4()}
+            singleRestaurantData={this.state.allRestaurants[0]}
+            myCollectionData={this.state.myCollections}
+          />
+          {/* {this.state.allRestaurants.map((restaurant) => (
+            <SingleRestaurantCard
               key={uuidv4()}
               singleRestaurantData={restaurant}
             />
-          ))}
+          ))} */}
         </Card.Group>
       </Container>
     );
