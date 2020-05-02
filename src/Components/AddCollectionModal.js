@@ -35,9 +35,6 @@ class AddCollectionModal extends React.Component {
         trigger={
           <Button size="small">
             <Button.Content visible>Add to collection</Button.Content>
-            {/* <Button.Content hidden>
-              <Icon name="save outline" />
-            </Button.Content> */}
           </Button>
         }
       >

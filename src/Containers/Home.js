@@ -49,18 +49,18 @@ class Home extends React.Component {
         </Statistic>
         <LoadingCircle isLoading={this.state.isLoading} />
         <Card.Group stackable itemsPerRow="5">
-          <SingleRestaurantCard
+          {/* <SingleRestaurantCard
             aria-Label="card"
             key={uuidv4()}
             singleRestaurantData={this.state.allRestaurants[0]}
-            myCollectionData={this.state.myCollections}
-          />
-          {/* {this.state.allRestaurants.map((restaurant) => (
+          /> */}
+          {this.state.allRestaurants.map((restaurant) => (
             <SingleRestaurantCard
               key={uuidv4()}
               singleRestaurantData={restaurant}
+              myCollectionData={this.state.myCollections}
             />
-          ))} */}
+          ))}
         </Card.Group>
       </Container>
     );
