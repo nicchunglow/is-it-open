@@ -1,4 +1,5 @@
 import React from "react";
+import { v4 as uuidv4 } from "uuid";
 import { Modal, Button, Header, Input, List, Label } from "semantic-ui-react";
 
 class AddCollectionModal extends React.Component {
@@ -17,11 +18,6 @@ class AddCollectionModal extends React.Component {
     });
   };
 
-  onClickCollection = (event) => {
-    this.setState({
-      searchCollectionName: event,
-    });
-  };
   render() {
     const filterCollectionName = this.state.myCollectionData.filter(
       (perCollection) =>
@@ -52,7 +48,7 @@ class AddCollectionModal extends React.Component {
             {!!this.state.searchCollectionName &&
               filterCollectionName.map((collection) => {
                 return (
-                  <List>
+                  <List key={uuidv4()}>
                     <List.Item>
                       <Label color="orange">{collection}</Label>
                     </List.Item>
