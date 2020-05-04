@@ -37,7 +37,7 @@ class AddCollectionModal extends React.Component {
         <Modal.Header floated="left">Adding to collection</Modal.Header>
         <Modal.Content>
           <Header>
-            Search your collections and save this restuarant in it!
+            Search your collections and save this restaurant in it!
           </Header>
           <Modal.Description>
             <Input

@@ -6,13 +6,12 @@ import {
   Statistic,
   Button,
   Input,
-  Divider,
   Segment,
   Header,
+  Loader,
 } from "semantic-ui-react";
 import { v4 as uuidv4 } from "uuid";
 import Papa from "papaparse";
-import LoadingCircle from "../Components/Loader";
 class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -20,8 +19,10 @@ class Home extends React.Component {
       allRestaurants: [["KFC", "Everyday"]],
       isLoading: true,
       myCollections: ["Korean", "Chinese", "Indian"],
-      numberOfRestaurantsShown: 5,
+      numberOfRestaurantsShown: 10,
       searchRestaurantName: "",
+      searchRestaurantDatesAndTime: "",
+      filteredNamesLength: 0,
     };
   }
 
@@ -33,7 +34,7 @@ class Home extends React.Component {
         header: false,
         complete: (results) => {
           this.updateAllRestaurants(results);
-          this.updateLoading();
+          this.updateLoadingFalse();
         },
       }
     );
@@ -45,13 +46,16 @@ class Home extends React.Component {
     });
   };
 
-  updateLoading = () => {
+  updateLoadingFalse = () => {
     this.setState({ isLoading: false });
+  };
+  updateLoadingTrue = () => {
+    this.setState({ isLoading: true });
   };
 
   showMoreRestaurants = () => {
     this.setState({
-      numberOfRestaurantsShown: this.state.numberOfRestaurantsShown + 5,
+      numberOfRestaurantsShown: this.state.numberOfRestaurantsShown + 10,
     });
   };
 
@@ -68,12 +72,34 @@ class Home extends React.Component {
   };
 
   filterByName = () => {
-    return this.state.allRestaurants
+    const filteredNames = this.state.allRestaurants
       .filter((perRestaurant) =>
         perRestaurant[0]
           .toLowerCase()
           .includes(this.state.searchRestaurantName.toLowerCase())
       )
+      .slice(0, this.state.numberOfRestaurantsShown)
+      .map((restaurant) => {
+        return (
+          <SingleRestaurantCard
+            key={uuidv4()}
+            singleRestaurantData={restaurant}
+            myCollectionData={this.state.myCollections}
+          />
+        );
+      });
+
+    return filteredNames;
+  };
+
+  filterByDate = () => {
+    return this.state.allRestaurants
+      .filter((perRestaurant) =>
+        perRestaurant[1]
+          .toLowerCase()
+          .includes(this.state.searchRestaurantDatesAndTime.toLowerCase())
+      )
+      .slice(0, this.state.numberOfRestaurantsShown)
       .map((restaurant) => {
         return (
           <SingleRestaurantCard
@@ -84,15 +110,23 @@ class Home extends React.Component {
         );
       });
   };
+
   onSearchRestaurantNameChange = (event) => {
     this.setState({
       searchRestaurantName: event.target.value,
     });
   };
+
+  onSearchRestaurantDateChange = (event) => {
+    this.setState({
+      searchRestaurantDatesAndTime: event.target.value.trim(),
+    });
+  };
+
   render() {
     return (
       <Container aria-label="Home Container">
-        <LoadingCircle isLoading={this.state.isLoading} />
+        {<Loader active={this.state.isLoading} />}
         <Segment.Group>
           <Segment>
             <Statistic>
@@ -111,21 +145,29 @@ class Home extends React.Component {
               placeholder="Search by Name"
               onChange={this.onSearchRestaurantNameChange}
             />
-            <h4>Search your restaurant by Opening day!</h4>
-            <Input placeholder="Search by Opening Day" />
+            <h4>Search your restaurant by day or time!</h4>
+            <Input
+              placeholder="e.g Tues or 4 am "
+              onChange={this.onSearchRestaurantDateChange}
+            />
           </Segment>
-          <Segment>
+          <Segment loading={this.state.isLoading}>
             <Card.Group stackable itemsPerRow="5" centered>
               {this.state.searchRestaurantName !== "" && this.filterByName()}
+              {this.state.searchRestaurantDatesAndTime !== "" &&
+                this.filterByDate()}
               {this.state.searchRestaurantName === "" &&
                 this.renderRestaurants()}
-              {this.state.searchRestaurantName === "" && (
-                <Button
-                  color="orange"
-                  content="Load More"
-                  onClick={this.showMoreRestaurants}
-                />
-              )}
+              <Container>
+                {this.state.numberOfRestaurantsShown <
+                  this.state.allRestaurants.length && (
+                  <Button
+                    color="orange"
+                    content="Load More"
+                    onClick={this.showMoreRestaurants}
+                  />
+                )}
+              </Container>
             </Card.Group>
           </Segment>
         </Segment.Group>
