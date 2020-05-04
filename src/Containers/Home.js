@@ -16,7 +16,7 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      allRestaurants: [["KFC", "Everyday"]],
+      allRestaurants: [],
       isLoading: true,
       myCollections: ["Korean", "Chinese", "Indian"],
       numberOfRestaurantsShown: 10,
@@ -32,8 +32,8 @@ class Home extends React.Component {
       {
         download: true,
         header: false,
-        complete: (results) => {
-          this.updateAllRestaurants(results);
+        complete: (response) => {
+          this.updateAllRestaurants(response.data);
           this.updateLoadingFalse();
         },
       }
@@ -42,7 +42,7 @@ class Home extends React.Component {
 
   updateAllRestaurants = (results) => {
     this.setState({
-      allRestaurants: results.data,
+      allRestaurants: results,
     });
   };
 
@@ -161,11 +161,9 @@ class Home extends React.Component {
               <Container>
                 {this.state.numberOfRestaurantsShown <
                   this.state.allRestaurants.length && (
-                  <Button
-                    color="orange"
-                    content="Load More"
-                    onClick={this.showMoreRestaurants}
-                  />
+                  <Button color="orange" onClick={this.showMoreRestaurants}>
+                    Load More
+                  </Button>
                 )}
               </Container>
             </Card.Group>
