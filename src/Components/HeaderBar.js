@@ -9,7 +9,13 @@ const headerBar = () => {
         <Link to="/">All Restaurants</Link>
       </Menu.Item>
       <Menu.Item name="Your Collections">
-        <Link to="/restaurants/yourcollection">Your Collections</Link>
+        <Link to="/users/collections">Your Collections</Link>
+      </Menu.Item>
+      <Menu.Item name="Your Collections">
+        <Link to="/users/register">Register</Link>
+      </Menu.Item>
+      <Menu.Item name="Your Collections">
+        <Link to="/users/login">Login?</Link>
       </Menu.Item>
     </Menu>
   );
