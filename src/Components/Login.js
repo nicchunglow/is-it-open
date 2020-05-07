@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import axios from "../utils/axios";
-import { Card, Input, Button, Segment } from "semantic-ui-react";
+import { Divider, Card, Input, Button, Container } from "semantic-ui-react";
 
 class Login extends React.Component {
   constructor(props) {
@@ -44,24 +44,32 @@ class Login extends React.Component {
   };
   render() {
     return (
-      <Card centered>
-        <Card.Content>
+      <Container>
+        <Divider hidden />
+        <Card centered raised>
           <Card.Content>
-            <Card.Header as="h2">Login</Card.Header>
+            <Card.Content>
+              <Card.Header as="h2">Login</Card.Header>
+            </Card.Content>
+            <Divider hidden />
+            <Card.Content>
+              <Card.Header>Email</Card.Header>
+              <Container>
+                <Input onChange={this.onChangeEmail} />
+                <Card.Header>password</Card.Header>
+                <Input onChange={this.onChangePassword} />
+                <Divider hidden />
+                <Button onClick={this.PostLogin} content="Login!" />
+              </Container>
+            </Card.Content>
+            <Divider horizontal>Or</Divider>
+            <Card.Description as="h3">Not yet a user?</Card.Description>
+            <Button onClick={<Link to="/users/register" />}>
+              Sign up today!
+            </Button>
           </Card.Content>
-          <Segment>
-            <Card.Header>Email</Card.Header>
-            <Input onChange={this.onChangeEmail} />
-            <Card.Header>password</Card.Header>
-            <Input onChange={this.onChangePassword} />
-          </Segment>
-          <Button onClick={this.PostLogin} />
-          <Card.Description>Not a user?</Card.Description>
-          <Button onClick={<Link to="/users/register" />}>
-            Sign up today!
-          </Button>
-        </Card.Content>
-      </Card>
+        </Card>
+      </Container>
     );
   }
 }

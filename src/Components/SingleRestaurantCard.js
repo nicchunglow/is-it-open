@@ -15,7 +15,7 @@ class SingleRestaurantCard extends React.Component {
 
   render() {
     return (
-      <Card color="orange" aria-label="restaurant card">
+      <Card color="orange" aria-label="restaurant card" raised>
         <Card.Content>
           <Card.Header>{this.state.singleRestaurantData[0]}</Card.Header>
           <Card.Description>
@@ -23,9 +23,10 @@ class SingleRestaurantCard extends React.Component {
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
-          <AddCollectionModal 
-          aria-label="add to collection button"
-          myCollectionData={this.state.myCollectionData} />
+          <AddCollectionModal
+            aria-label="add to collection button"
+            myCollectionData={this.state.myCollectionData}
+          />
         </Card.Content>
       </Card>
     );

@@ -4,7 +4,7 @@ import { Menu } from "semantic-ui-react";
 
 const headerBar = () => {
   return (
-    <Menu>
+    <Menu stackable compact fluid>
       <Menu.Item name="All Restaurants">
         <Link to="/">All Restaurants</Link>
       </Menu.Item>
