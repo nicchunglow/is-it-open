@@ -4,7 +4,7 @@
 
 
 
-### Table of contents
+## Table of contents
 
 
 
@@ -42,7 +42,7 @@
 
 
 
-#### Introduction
+## Introduction
 
 Build a simple user-facing webapp that allows the user to filter for restaurants open by date time as well as restaurant name. On top of that, users can save restaurants into their own named collections (eg. Vegetarian favourites, Meat-lovers etc.). Users can also invite their friends to collaborate (add, remove, edit name) on the collections via email, and they can see updates to their collections in real-time, without page refreshes.
 
@@ -56,15 +56,15 @@ Working live demo can be accessed at https://is-it-open.netlify.app/
 *Note - current db not setup. Only able to work with local DB*
 
 
-##### Process of Registration,login and to create collection
+#### Process of Registration,login and to create collection
 
 ![alt-text](https://media.giphy.com/media/f47szTr2iHmzUw3A7N/giphy.gif)
 
-##### Process of viewing individual restaurant and searching individual collection before saving.
+#### Process of viewing individual restaurant and searching individual collection before saving.
 
 ![alt-text](https://media.giphy.com/media/WrPAtCdueUO44zSEZx/giphy.gif)
 
-#### Technologies
+## Technologies
 JavaScript ES6
 React.js 16.13.1
 axios 0.19.2
