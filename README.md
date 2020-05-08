@@ -12,7 +12,7 @@
 
 
 
-**\-** [Feature Demo](####Feature Demo)
+**\-** [Features Demo](####Features Demo)
 
 
 
@@ -95,7 +95,7 @@ Working live demo can be accessed at https://is-it-open.netlify.app/
 
 
 
-#### Technologies**
+#### Technologies
 
 
 
@@ -198,6 +198,7 @@ npm run build // Builds the app for production
 ## Things to note
 
 - The project uses semantic-ui-react. 
+- You MUST remember to set your REACT_APP_BACKEND_URL as localhost when connecting to the db as the db is only usable locally at the moment. 
 - For this frontend, the following functions are enabled: 
   1. Register a user
   2. Login a user with cookie.
