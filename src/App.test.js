@@ -4,6 +4,6 @@ import App from "./App";
 
 test("should render 'Is it Open?' ", () => {
   const { getByText } = render(<App />);
-  const homeText = getByText("Is it Open?");
+  const homeText = getByText("All Restaurants");
   expect(homeText).toBeInTheDocument();
 });

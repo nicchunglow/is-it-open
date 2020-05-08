@@ -1,68 +1,217 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Is it Open?
 
-## Available Scripts
+
+
+
+
+**#### Table of contents**
+
+
+
+**\-** [Introduction](####Introduction)
+
+
+
+**\-** [Feature Demo](####Feature Demo)
+
+
+
+**\-** [Technologies](####Technologies)
+
+
+
+**\-** [Setup](####Setup)
+
+
+
+**\-** [Envionmental Variable](####Environmental Variable)
+
+
+
+**\-** [Available Scripts](####Available Scripts)
+
+
+
+**\-** [Things to note](####Things to note)
+
+
+
+**\-** [Things to improve](####Things to improve)
+
+
+
+
+
+**#### Introduction**
+
+
+
+
+
+Build a simple user-facing webapp that allows the user to filter for restaurants open by date time as well as restaurant name. On top of that, users can save restaurants into their own named collections (eg. Vegetarian favourites, Meat-lovers etc.). Users can also invite their friends to collaborate (add, remove, edit name) on the collections via email, and they can see updates to their collections in real-time, without page refreshes.
+
+
+
+Link to backend: https://github.com/nicchunglow/is-it-open-backend
+
+
+
+
+
+**## Features Demo**
+
+
+
+
+
+Working live demo can be accessed at https://is-it-open.netlify.app/
+
+*Note - current db not setup. Only able to work with local DB*
+
+
+
+
+
+**##### Process of Registration,login and to create collection**
+
+*Yes. There is confetti*
+
+
+
+<img src=""></img>
+
+
+
+
+
+**##### Process of viewing individual restaurant and searching individual collection before saving.**
+
+
+
+
+
+<img src=""></img>
+
+
+
+
+
+**#### Technologies**
+
+
+
+
+
+JavaScript ES6
+
+
+
+React.js 16.13.1
+
+
+
+axios 0.19.2
+
+
+
+papaparse : 5.2.0
+
+
+
+uuid: 7.0.3 
+
+
+
+semantic-ui-react: 0.88.2
+
+
+
+semantic-ui-css: 2.4.1
+
+
+
+**#### Setup**
+
+
+
+To run this project, git clone and install it locally using npm:
+
+
+
+**\`**``
+
+$ cd ../
+
+
+
+$ git clone https://github.com/nicchunglow/is-it-open
+
+
+
+$ npm install
+
+
+
+$ npm start
+
+
+
+**\`**``
+
+
+
+**## Available Scripts**
+
+
 
 In the project directory, you can run:
 
-### `npm start`
+**\`**``
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
 
-### `npm test`
+npm start // runs the app in development mode
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+npm test // run test runner in interactive without watch mode
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+npm run coverage // run test coverage without watch mode
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+npm run build // Builds the app for production
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+**\`**``
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**## Environment Variables**
 
-### Code Splitting
+**\-** REACT_APP_BACKEND_URL: API to backend 
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+*Do note to set for local db due to the current db condition*
 
-### Analyzing the Bundle Size
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
 
-### Making a Progressive Web App
+## Things to note
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+- The project uses semantic-ui-react. 
+- For this frontend, the following functions are enabled: 
+  1. Register a user
+  2. Login a user with cookie.
+  3. Search restaurant names and opening day/timing
+  4. Create Collection and have it displayed without refreshing.
 
-### Advanced Configuration
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
 
-### Deployment
+## Things to improve
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+- Enable functions like display restaurant in collection and add collaborators. 
+- Conduct more test.
 
-### `npm run build` fails to minify
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+ This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

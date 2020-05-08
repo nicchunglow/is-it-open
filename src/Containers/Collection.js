@@ -19,6 +19,7 @@ class Collection extends React.Component {
     this.state = {
       allCollections: [],
       collectionCreateInput: "",
+      createSuccess: false,
     };
   }
 
@@ -40,6 +41,19 @@ class Collection extends React.Component {
     });
   };
 
+  createCollection = async () => {
+    try {
+      const payload = {
+        collectionName: this.state.collectionCreateInput,
+      };
+      await axios.post("/collections", payload);
+      this.onCreateSuccess(payload);
+    } catch (error) {
+      if (error.response.status === 400) {
+        alert("Input is empty or your collection exist.");
+      }
+    }
+  };
   onCreateSuccess = (payload) => {
     this.setState({
       createSuccess: true,
@@ -50,21 +64,11 @@ class Collection extends React.Component {
   renderAllCollections = () => {
     return this.state.allCollections.map((collection) => {
       return (
-        <Label color="yellow" size="huge">
+        <Card color="yellow" as="h2">
           {collection}
-        </Label>
+        </Card>
       );
     });
-  };
-
-  renderAllRestaurants = () => {
-    return this.state.allRestaurants.map((restaurant) => (
-      <Card raised>
-        <Card.Content>
-          <Card.Header as="h2">{restaurant.restaurantName}</Card.Header>
-        </Card.Content>
-      </Card>
-    ));
   };
 
   render() {
@@ -95,11 +99,11 @@ class Collection extends React.Component {
             </Card.Header>
           )}
         </Segment>
-        <Segment>
-          <Header>Your Current Collections!</Header>
+        <Header>Your Current Collections!</Header>
+        <Card.Group stackable itemsPerRow="3" centered>
           {this.renderAllCollections()}
-          <Divider horizontal />
-        </Segment>
+        </Card.Group>
+        <Divider horizontal />
         <Divider hidden />
         <Divider hidden />
         <Divider hidden />
