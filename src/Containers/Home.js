@@ -129,7 +129,7 @@ class Home extends React.Component {
       <Container>
         {<Loader active={this.state.isLoading} />}
         <Segment.Group>
-          <Segment>
+          <Segment raised>
             <Statistic>
               <Statistic.Value>
                 {this.state.allRestaurants.length}
@@ -139,36 +139,39 @@ class Home extends React.Component {
               </Statistic.Label>
             </Statistic>
           </Segment>
-          <Header>Can't find your restaurant?</Header>
-          <h4>Search your restaurant by name!</h4>
-          <Input
-            placeholder="Search by Name"
-            onChange={this.onSearchRestaurantNameChange}
-          />
-          <h4>Search your restaurant by day or time!</h4>
-          <Input
-            placeholder="e.g Tues or 4 am "
-            onChange={this.onSearchRestaurantDateChange}
-          />
-          <Divider hidden />
-          <Segment loading={this.state.isLoading}>
-            <Card.Group stackable itemsPerRow="5" centered>
-              {this.state.searchRestaurantName !== "" && this.filterByName()}
-              {this.state.searchRestaurantDatesAndTime !== "" &&
-                this.filterByDate()}
-              {this.state.searchRestaurantName === "" &&
-                this.renderRestaurants()}
-              <Container>
-                {this.state.numberOfRestaurantsShown <
-                  this.state.allRestaurants.length && (
-                  <Button color="orange" onClick={this.showMoreRestaurants}>
-                    Load More
-                  </Button>
-                )}
-              </Container>
-            </Card.Group>
+          <Segment>
+            <Header>Can't find your restaurant?</Header>
+            <h4>Search your restaurant by name!</h4>
+            <Input
+              placeholder="Search by Name"
+              onChange={this.onSearchRestaurantNameChange}
+            />
+            <h4>Search your restaurant by day or time!</h4>
+            <Input
+              placeholder="e.g Tues or 4 am "
+              onChange={this.onSearchRestaurantDateChange}
+            />
           </Segment>
         </Segment.Group>
+        <Segment loading={this.state.isLoading} raised>
+          <Card.Group stackable itemsPerRow="5" centered>
+            {this.state.searchRestaurantName !== "" && this.filterByName()}
+            {this.state.searchRestaurantDatesAndTime !== "" &&
+              this.filterByDate()}
+            {this.state.searchRestaurantName === "" && this.renderRestaurants()}
+            <Container>
+              {this.state.numberOfRestaurantsShown <
+                this.state.allRestaurants.length && (
+                <Button color="orange" onClick={this.showMoreRestaurants}>
+                  Load More
+                </Button>
+              )}
+            </Container>
+          </Card.Group>
+        </Segment>
+        <Divider hidden />
+        <Divider hidden />
+        <Divider hidden />
       </Container>
     );
   }

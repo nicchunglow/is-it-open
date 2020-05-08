@@ -94,6 +94,17 @@ class Login extends React.Component {
             </Link>
           </Card.Content>
         </Card>
+        <Divider hidden />
+        <Divider hidden />
+        <Divider hidden />
+        <Divider hidden />
+        <Divider hidden />
+        <Divider hidden />
+        <Divider hidden />
+        <Divider hidden />
+        <Divider hidden />
+        <Divider hidden />
+        <Divider hidden />
       </Container>
     );
   }

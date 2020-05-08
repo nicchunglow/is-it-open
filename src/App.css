@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   text-align: center;
+  background-image: linear-gradient(to top, #ec8366 0%, #f58c3c 100%);
 }
 
 h1 {
@@ -9,10 +10,8 @@ h1 {
 }
 
 .Logo-tag {
-  display: flex;
-  flex-direction: column;
+  text-align: center;
   background-image: linear-gradient(to top, #ec8366 0%, #f58c3c 100%);
-  /* border-radius: 0px 0px 10px 10px; */
   padding: 20px;
-  /* box-shadow: 20px 15px 10px rgba(116, 116, 116, 0.4); */
+  width: 1000px;
 }

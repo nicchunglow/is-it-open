@@ -6,16 +6,16 @@ import Login from "./Components/Login";
 import Register from "./Components/Register";
 import Collection from "./Containers/Collection";
 import HeaderBar from "./Components/HeaderBar";
+import { Divider } from "semantic-ui-react";
 
 function App() {
   return (
-    <div className="App">
-      <BrowserRouter>
+    <BrowserRouter>
+      <div className="App">
         <header className="App-header">
-          <span className="Logo-tag">
-            <h1>Is it Open?</h1>
-          </span>
           <div>
+            <Divider hidden />
+            <Divider hidden />
             <HeaderBar />
             <Route exact path="/" component={Home} />
             <Route exact path="/users/collections" component={Collection} />
@@ -23,8 +23,8 @@ function App() {
             <Route exact path="/users/login" component={Login} />
           </div>
         </header>
-      </BrowserRouter>
-    </div>
+      </div>
+    </BrowserRouter>
   );
 }
 
