@@ -1,7 +1,7 @@
 import axios from "axios";
 const instance = axios.create({
   baseURL:
-    process.env.REACT_APP_HEROKU_BACKEND_URL ||
+    process.env.REACT_APP_BACKEND_URL ||
     "http://localhost:3000" ||
     "http://localhost:3001",
 });
