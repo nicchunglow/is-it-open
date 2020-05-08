@@ -4,7 +4,7 @@
 
 
 
-**#### Table of contents**
+#### Table of contents
 
 
 
@@ -42,7 +42,7 @@
 
 
 
-**#### Introduction**
+#### Introduction
 
 
 
@@ -58,7 +58,7 @@ Link to backend: https://github.com/nicchunglow/is-it-open-backend
 
 
 
-**## Features Demo**
+## Features Demo
 
 
 
@@ -72,20 +72,7 @@ Working live demo can be accessed at https://is-it-open.netlify.app/
 
 
 
-**##### Process of Registration,login and to create collection**
-
-*Yes. There is confetti*
-
-
-
-<img src=""></img>
-
-
-
-
-
-**##### Process of viewing individual restaurant and searching individual collection before saving.**
-
+##### Process of Registration,login and to create collection
 
 
 
@@ -96,7 +83,19 @@ Working live demo can be accessed at https://is-it-open.netlify.app/
 
 
 
-**#### Technologies**
+##### Process of viewing individual restaurant and searching individual collection before saving.
+
+
+
+
+
+<img src=""></img>
+
+
+
+
+
+#### Technologies**
 
 
 
@@ -130,7 +129,7 @@ semantic-ui-css: 2.4.1
 
 
 
-**#### Setup**
+#### Setup
 
 
 
@@ -160,7 +159,7 @@ $ npm start
 
 
 
-**## Available Scripts**
+## Available Scripts
 
 
 
@@ -188,7 +187,7 @@ npm run build // Builds the app for production
 
 **\`**``
 
-**## Environment Variables**
+## Environment Variables
 
 **\-** REACT_APP_BACKEND_URL: API to backend 
 
