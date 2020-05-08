@@ -8,10 +8,11 @@ import {
   Divider,
   Input,
 } from "semantic-ui-react";
-import CreateCollection from "../Components/CreateCollection";
+import singleCollectionCard from "../Components/singleCollectionCard";
 import { v4 as uuidv4 } from "uuid";
 
 import axios from "../utils/axios";
+import SingleCollectionCard from "../Components/singleCollectionCard";
 class Collection extends React.Component {
   constructor(props) {
     super(props);
@@ -58,15 +59,6 @@ class Collection extends React.Component {
   render() {
     return (
       <Container>
-        <CreateCollection />
-        <Segment>
-          <Statistic>
-            <Statistic.Value>
-              {this.state.allCollections.length}
-            </Statistic.Value>
-            <Statistic.Label> number of collections made!</Statistic.Label>
-          </Statistic>
-        </Segment>
         <Card centered raised>
           <Divider hidden />
           <Card.Header as="h2">Create Collection</Card.Header>
@@ -95,6 +87,28 @@ class Collection extends React.Component {
           </Card.Content>
         </Card>
         <Divider hidden />
+        <Segment.Group>
+          <Segment>
+            <Statistic>
+              <Statistic.Value>
+                {this.state.allCollections.length}
+              </Statistic.Value>
+              <Statistic.Label> number of collections made!</Statistic.Label>
+            </Statistic>
+          </Segment>
+          <Segment>
+            <Card.Group stackable itemsPerRow="" centered>
+              {this.state.allCollections.map((data) => {
+                return (
+                  <SingleCollectionCard
+                    key={uuidv4()}
+                    singleCollectionName={data}
+                  />
+                );
+              })}
+            </Card.Group>
+          </Segment>
+        </Segment.Group>
       </Container>
     );
   }

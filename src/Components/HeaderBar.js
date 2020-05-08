@@ -1,6 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Menu, Button, Container } from "semantic-ui-react";
+import { Link, Redirect } from "react-router-dom";
+import { Menu, Button, Container, Modal } from "semantic-ui-react";
 import axios from "../utils/axios";
 class headerBar extends React.Component {
   constructor(props) {
@@ -15,9 +15,10 @@ class headerBar extends React.Component {
     });
   };
 
-  PostLogin = async () => {
+  PostLogout = async () => {
     await axios.post("/users/logout");
     this.onLogoutSuccess();
+    alert("Logout Successful.");
   };
 
   render() {
@@ -46,8 +47,9 @@ class headerBar extends React.Component {
             circular
             color="linkedin"
             content="Logout"
-            onClick={this.PostLogin}
+            onClick={this.PostLogout}
           ></Button>
+          {!!this.state.logoutSuccess && <Redirect path="/" />}
         </Menu.Item>
       </Menu>
     );
