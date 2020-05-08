@@ -77,7 +77,7 @@ Working live demo can be accessed at https://is-it-open.netlify.app/
 
 
 
-<img src=""></img>
+<img src="https://media.giphy.com/media/f47szTr2iHmzUw3A7N/giphy.gif"></img>
 
 
 
@@ -89,7 +89,7 @@ Working live demo can be accessed at https://is-it-open.netlify.app/
 
 
 
-<img src=""></img>
+<img src="https://media.giphy.com/media/WrPAtCdueUO44zSEZx/giphy.gif"></img>
 
 
 
