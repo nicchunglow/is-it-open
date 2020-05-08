@@ -40,20 +40,27 @@ class Login extends React.Component {
   };
 
   PostLogin = async (event) => {
-    const payload = {
-      email: this.state.email,
-      password: this.state.password,
-    };
-    await axios.post(
-      "https://is-it-open-backend.herokuapp.com/users/login",
-      payload
-    );
+    try {
+      const payload = {
+        email: this.state.email,
+        password: this.state.password,
+      };
+      await axios.post("/users/login", payload);
 
-    this.onLoginSuccess();
+      this.onLoginSuccess();
+    } catch (error) {
+      if (error.response.status === 401) {
+        alert("Input of email or address invalid.");
+      } else if (error.response.status === 400) {
+        alert("Please enter the email and password.");
+      }
+    }
   };
+
   render() {
     return (
       <Container>
+        {this.state.loginSuccess === true && ConfettiExplosion()}
         <Divider hidden />
         <Card centered raised>
           <Card.Content>
@@ -63,13 +70,16 @@ class Login extends React.Component {
             <Divider hidden />
             <Card.Content>
               <Card.Header>Email</Card.Header>
-              <Container>
-                <Input onChange={this.onChangeEmail} />
-                <Card.Header>password</Card.Header>
-                <Input onChange={this.onChangePassword} />
-                <Divider hidden />
-                <Button onClick={this.PostLogin} content="Login!" />
-              </Container>
+              <Input onChange={this.onChangeEmail} />
+              <Card.Header>password</Card.Header>
+              <Input onChange={this.onChangePassword} />
+              <Divider hidden />
+              <Button
+                circular
+                color="orange"
+                onClick={this.PostLogin}
+                content="Login now!"
+              />
             </Card.Content>
             {this.state.loginSuccess === true && (
               <Card.Header as="h3">
@@ -79,9 +89,9 @@ class Login extends React.Component {
             )}
             <Divider horizontal>Or</Divider>
             <Card.Description as="h3">Not yet a user?</Card.Description>
-            <Button onClick={<Link to="/users/register" />}>
-              Sign up today!
-            </Button>
+            <Link to="/users/register">
+              <Button circular color="orange" content="Register here!"></Button>
+            </Link>
           </Card.Content>
         </Card>
       </Container>

@@ -1,7 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import axios from "../utils/axios";
-import { Container, Divider, Card, Input, Button } from "semantic-ui-react";
+import {
+  Label,
+  Container,
+  Divider,
+  Card,
+  Input,
+  Button,
+} from "semantic-ui-react";
 
 class RegisterUser extends React.Component {
   constructor(props) {
@@ -31,19 +38,23 @@ class RegisterUser extends React.Component {
     });
   };
 
-  RegisterUser = async (event) => {
-    const payload = {
-      username: this.state.email,
-      password: this.state.password,
-    };
+  RegisterUser = async () => {
+    try {
+      const payload = {
+        email: this.state.email,
+        password: this.state.password,
+      };
 
-    await axios.post(
-      "https://is-it-open-backend.herokuapp.com/users/register",
-      payload
-    );
-    this.onRegisterSuccess();
+      await axios.post("/users/register", payload);
+      this.onRegisterSuccess();
+    } catch (error) {
+      if (error.response.status === 400) {
+        alert("Registration failed. Input of email and address invalid.");
+      } else if (error.response.status === 422) {
+        alert("Email is already in use. Please try again.");
+      }
+    }
   };
-
   render() {
     return (
       <Container>
@@ -61,12 +72,25 @@ class RegisterUser extends React.Component {
                 <Card.Header>password</Card.Header>
                 <Input onChange={this.onChangePassword} />
                 <Divider hidden />
-                <Button onClick={this.PostLogin} content="Login!" />
+                <Button
+                  circular
+                  color="orange"
+                  onClick={this.RegisterUser}
+                  content="Register now!"
+                />
               </Container>
             </Card.Content>
+            {this.state.registerSuccess === true && (
+              <Card.Header as="h3">
+                <Divider hidden />
+                Register Successful!
+              </Card.Header>
+            )}
             <Divider horizontal>Or</Divider>
             <Card.Description as="h3">Already a user?</Card.Description>
-            <Button onClick={<Link to="/users/login" />}>Login here!</Button>
+            <Link to="/users/login">
+              <Button circular color="orange" content="Login here!"></Button>
+            </Link>
           </Card.Content>
         </Card>
       </Container>
