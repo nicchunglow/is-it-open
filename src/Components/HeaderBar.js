@@ -11,10 +11,10 @@ const headerBar = () => {
       <Menu.Item name="Your Collections">
         <Link to="/users/collections">Your Collections</Link>
       </Menu.Item>
-      <Menu.Item name="Your Collections">
+      <Menu.Item name="Register">
         <Link to="/users/register">Register</Link>
       </Menu.Item>
-      <Menu.Item name="Your Collections">
+      <Menu.Item name="Login">
         <Link to="/users/login">Login?</Link>
       </Menu.Item>
     </Menu>

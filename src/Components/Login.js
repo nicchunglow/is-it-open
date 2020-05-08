@@ -1,7 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import axios from "../utils/axios";
-import { Divider, Card, Input, Button, Container } from "semantic-ui-react";
+import {
+  Header,
+  Divider,
+  Card,
+  Input,
+  Button,
+  Container,
+  Label,
+} from "semantic-ui-react";
+import ConfettiExplosion from "./Confetti";
 
 class Login extends React.Component {
   constructor(props) {
@@ -62,6 +71,12 @@ class Login extends React.Component {
                 <Button onClick={this.PostLogin} content="Login!" />
               </Container>
             </Card.Content>
+            {this.state.loginSuccess === true && (
+              <Card.Header as="h3">
+                <Divider hidden />
+                Login Successful!
+              </Card.Header>
+            )}
             <Divider horizontal>Or</Divider>
             <Card.Description as="h3">Not yet a user?</Card.Description>
             <Button onClick={<Link to="/users/register" />}>

@@ -9,6 +9,7 @@ import {
   Segment,
   Header,
   Loader,
+  Divider,
 } from "semantic-ui-react";
 import { v4 as uuidv4 } from "uuid";
 import Papa from "papaparse";
@@ -125,7 +126,7 @@ class Home extends React.Component {
 
   render() {
     return (
-      <Container aria-label="Home Container">
+      <Container>
         {<Loader active={this.state.isLoading} />}
         <Segment.Group>
           <Segment>
@@ -138,19 +139,18 @@ class Home extends React.Component {
               </Statistic.Label>
             </Statistic>
           </Segment>
-          <Segment>
-            <Header>Can't find your restaurant?</Header>
-            <h4>Search your restaurant by name!</h4>
-            <Input
-              placeholder="Search by Name"
-              onChange={this.onSearchRestaurantNameChange}
-            />
-            <h4>Search your restaurant by day or time!</h4>
-            <Input
-              placeholder="e.g Tues or 4 am "
-              onChange={this.onSearchRestaurantDateChange}
-            />
-          </Segment>
+          <Header>Can't find your restaurant?</Header>
+          <h4>Search your restaurant by name!</h4>
+          <Input
+            placeholder="Search by Name"
+            onChange={this.onSearchRestaurantNameChange}
+          />
+          <h4>Search your restaurant by day or time!</h4>
+          <Input
+            placeholder="e.g Tues or 4 am "
+            onChange={this.onSearchRestaurantDateChange}
+          />
+          <Divider hidden />
           <Segment loading={this.state.isLoading}>
             <Card.Group stackable itemsPerRow="5" centered>
               {this.state.searchRestaurantName !== "" && this.filterByName()}

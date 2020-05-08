@@ -18,7 +18,7 @@ function App() {
           <div>
             <HeaderBar />
             <Route exact path="/" component={Home} />
-            <Route exact path="/collections" component={Collection} />
+            <Route exact path="/users/collections" component={Collection} />
             <Route exact path="/users/register" component={Register} />
             <Route exact path="/users/login" component={Login} />
           </div>
