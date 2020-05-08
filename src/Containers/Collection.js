@@ -7,10 +7,10 @@ import {
   Button,
   Divider,
   Input,
+  Label,
+  Header,
 } from "semantic-ui-react";
-import singleCollectionCard from "../Components/singleCollectionCard";
 import { v4 as uuidv4 } from "uuid";
-
 import axios from "../utils/axios";
 import SingleCollectionCard from "../Components/singleCollectionCard";
 class Collection extends React.Component {
@@ -18,7 +18,7 @@ class Collection extends React.Component {
     super(props);
     this.state = {
       allCollections: [],
-      collectionNameInput: "",
+      collectionCreateInput: "",
     };
   }
 
@@ -29,9 +29,14 @@ class Collection extends React.Component {
       });
     });
   }
-  onChangeCollection = (event) => {
+  onChangeCreateCollection = (event) => {
     this.setState({
-      collectionNameInput: event.target.value,
+      collectionCreateInput: event.target.value,
+    });
+  };
+  onChangeSearchCollection = (event) => {
+    this.setState({
+      collectionSearchInput: event.target.value,
     });
   };
 
@@ -42,73 +47,64 @@ class Collection extends React.Component {
     });
   };
 
-  createCollection = async () => {
-    try {
-      const payload = {
-        collectionName: this.state.collectionNameInput,
-      };
-      await axios.post("/collections", payload);
-      this.onCreateSuccess(payload);
-    } catch (error) {
-      if (error.response.status === 400) {
-        alert("Input is empty or your collection exist.");
-      }
-    }
+  renderAllCollections = () => {
+    return this.state.allCollections.map((collection) => {
+      return (
+        <Label color="yellow" size="huge">
+          {collection}
+        </Label>
+      );
+    });
+  };
+
+  renderAllRestaurants = () => {
+    return this.state.allRestaurants.map((restaurant) => (
+      <Card raised>
+        <Card.Content>
+          <Card.Header as="h2">{restaurant.restaurantName}</Card.Header>
+        </Card.Content>
+      </Card>
+    ));
   };
 
   render() {
     return (
       <Container>
-        <Card centered raised>
-          <Divider hidden />
+        <Segment>
+          <Statistic>
+            <Statistic.Value>
+              {this.state.allCollections.length}
+            </Statistic.Value>
+            <Statistic.Label> number of collections made!</Statistic.Label>
+          </Statistic>
+        </Segment>
+        <Segment>
           <Card.Header as="h2">Create Collection</Card.Header>
+          <Input onChange={this.onChangeCreateCollection} />
           <Divider hidden />
-          <Card.Description>
-            Add your collection name and save!
-          </Card.Description>
-          <Divider hidden />
-          <Container>
-            <Input onChange={this.onChangeCollection} />
-          </Container>
-          <Divider hidden />
-          <Card.Content>
-            <Button
-              circular
-              color="orange"
-              onClick={this.createCollection}
-              content="Create Collection!"
-            />
-            {this.state.createSuccess === true && (
-              <Card.Header as="h3">
-                <Divider hidden />
-                {`${this.state.collectionNameInput} collection has been created!`}
-              </Card.Header>
-            )}
-          </Card.Content>
-        </Card>
+          <Button
+            circular
+            color="orange"
+            onClick={this.createCollection}
+            content="Create Collection!"
+          />
+          {this.state.createSuccess === true && (
+            <Card.Header as="h3">
+              <Divider hidden />
+              {`${this.state.collectionCreateInput} collection has been created!`}
+            </Card.Header>
+          )}
+        </Segment>
+        <Segment>
+          <Header>Your Current Collections!</Header>
+          {this.renderAllCollections()}
+          <Divider horizontal />
+        </Segment>
         <Divider hidden />
-        <Segment.Group>
-          <Segment>
-            <Statistic>
-              <Statistic.Value>
-                {this.state.allCollections.length}
-              </Statistic.Value>
-              <Statistic.Label> number of collections made!</Statistic.Label>
-            </Statistic>
-          </Segment>
-          <Segment>
-            <Card.Group stackable itemsPerRow="" centered>
-              {this.state.allCollections.map((data) => {
-                return (
-                  <SingleCollectionCard
-                    key={uuidv4()}
-                    singleCollectionName={data}
-                  />
-                );
-              })}
-            </Card.Group>
-          </Segment>
-        </Segment.Group>
+        <Divider hidden />
+        <Divider hidden />
+        <Divider hidden />
+        <Divider hidden />
       </Container>
     );
   }

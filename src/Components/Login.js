@@ -1,16 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import axios from "../utils/axios";
-import {
-  Header,
-  Divider,
-  Card,
-  Input,
-  Button,
-  Container,
-  Label,
-} from "semantic-ui-react";
-import ConfettiExplosion from "./Confetti";
+import { Divider, Card, Input, Button, Container } from "semantic-ui-react";
 
 class Login extends React.Component {
   constructor(props) {
@@ -60,7 +51,6 @@ class Login extends React.Component {
   render() {
     return (
       <Container>
-        {this.state.loginSuccess === true && ConfettiExplosion()}
         <Divider hidden />
         <Card centered raised>
           <Card.Content>
@@ -72,7 +62,7 @@ class Login extends React.Component {
               <Card.Header>Email</Card.Header>
               <Input onChange={this.onChangeEmail} />
               <Card.Header>password</Card.Header>
-              <Input onChange={this.onChangePassword} />
+              <Input type="password" onChange={this.onChangePassword} />
               <Divider hidden />
               <Button
                 circular

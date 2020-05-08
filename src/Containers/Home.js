@@ -12,6 +12,7 @@ import {
   Divider,
 } from "semantic-ui-react";
 import { v4 as uuidv4 } from "uuid";
+import axios from "../utils/axios";
 import Papa from "papaparse";
 class Home extends React.Component {
   constructor(props) {
@@ -19,7 +20,7 @@ class Home extends React.Component {
     this.state = {
       allRestaurants: [],
       isLoading: true,
-      myCollections: ["Korean", "Chinese", "Indian"],
+      myCollections: [],
       numberOfRestaurantsShown: 10,
       searchRestaurantName: "",
       searchRestaurantDatesAndTime: "",
@@ -39,6 +40,11 @@ class Home extends React.Component {
         },
       }
     );
+    axios.get("/collections").then((res) => {
+      this.setState({
+        myCollections: res.data,
+      });
+    });
   }
 
   updateAllRestaurants = (results) => {

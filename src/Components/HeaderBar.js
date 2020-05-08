@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, Redirect } from "react-router-dom";
-import { Menu, Button, Container, Modal } from "semantic-ui-react";
+import { Menu, Button } from "semantic-ui-react";
 import axios from "../utils/axios";
 class headerBar extends React.Component {
   constructor(props) {

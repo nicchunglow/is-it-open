@@ -14,7 +14,7 @@ class SingleCollectionCard extends React.Component {
   render() {
     return (
       <Link to={`/users/collections/${this.state.singleCollectionName}`}>
-        <Card raised inverted>
+        <Card raised>
           <Card.Content>
             <Card.Header as="h2">{this.state.singleCollectionName}</Card.Header>
           </Card.Content>
